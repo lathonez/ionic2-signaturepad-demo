@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (submit)="submit()" (window:resize)="beResponsive()">
+    <div class="sig-container" #sigContainer1>
+      <ion-row>
+        <button ion-button block type="button" (click)="sigs.first.clear()" [disabled]="!form.controls.signatureField1.valid">Clear Sig 1</button>
+      </ion-row>
+      <ion-row>
+        <signature-field formControlName="signatureField1"></signature-field>
+      </ion-row>
+    </div>
+    <div class="sig-container" #sigContainer2>
+      <ion-row>
+        <button ion-button block type="button" (click)="sigs.last.clear()" [disabled]="!form.controls.signatureField2.valid">Clear Sig 2</button>
+      </ion-row>
+      <ion-row>
+        <signature-field formControlName="signatureField2"></signature-field>
+      </ion-row>
+    </div>
+    <ion-row>
+      <button ion-button block type="button" (click)="clear()" [disabled]="!form.controls.signatureField1.valid && !form.controls.signatureField2.valid">Clear</button>
+      <button ion-button block type="submit" [disabled]="!form.valid">Submit</button>
+    </ion-row>
+  </form>
+</ion-content>
